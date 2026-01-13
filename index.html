@@ -8,48 +8,137 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logos/Logo_white_bg_black_font.png">
+    <link rel="apple-touch-icon" href="assets/logos/Logo_white_bg_black_font.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Inter:wght@300;400;500;600&family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <main class="container">
-        <header class="fade-in-down">
-            <img src="assets/logos/Logo_white_bg_black_font.png" alt="Canvas Studios Logo" class="logo">
-        </header>
+    <header class="fade-in-down">
+        <img src="assets/logos/Logo_white_bg_black_font.png" alt="Canvas Studios Logo" class="logo">
+    </header>
 
+    <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-image-container fade-in">
-                <div class="paint-splash splash-1"></div>
-                <div class="paint-splash splash-2"></div>
-                <img src="assets/lilarot%20seneaker.png" alt="Handbemalte Canvas Studios Sneaker" class="hero-image">
-            </div>
-
             <div class="hero-content fade-in-up">
-                <p class="tagline">Handmade in Germany</p>
+                <span class="tagline">Est. 2023 &bull; Germany</span>
                 <h1>Color Your Story</h1>
                 <p class="subtext">
-                    Wir machen aus weißen Sneakern Kunstwerke.<br>
-                    Jedes Paar ein Unikat. Startschuss 2025.
+                    Wir verwandeln weiße Premium-Sneaker in handbemalte Unikate.<br>
+                    Keine Massenware. 100% Handarbeit.
                 </p>
-                
-                <a href="https://instagram.com/canvasstudios.store" target="_blank" class="cta-button">
-                    <span class="btn-text">Follow our Journey</span>
-                    <span class="btn-icon">→</span>
+                <a href="https://instagram.com/canvasstudios.store" target="_blank" class="cta-button primary">
+                    <span>Follow the Drop</span>
+                    <span class="arrow">→</span>
                 </a>
+            </div>
+
+            <div class="hero-visual fade-in">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <img src="assets/lilarot%20seneaker.png" alt="Canvas Studios Signature Sneaker" class="sneaker-hero">
             </div>
         </section>
 
-        <footer class="fade-in">
-            <p>&copy; 2025 Canvas Studios. All rights reserved.</p>
+        <!-- Values Section -->
+        <section class="values scroll-reveal">
+            <div class="value-item">
+                <span class="value-number">01</span>
+                <h3>Handmade</h3>
+                <p>Jeder Pinselstrich wird von Hand in Deutschland gesetzt.</p>
+            </div>
+            <div class="value-item">
+                <span class="value-number">02</span>
+                <h3>Unique</h3>
+                <p>Kein Sneaker gleicht dem anderen. Dein Paar ist einzigartig.</p>
+            </div>
+            <div class="value-item">
+                <span class="value-number">03</span>
+                <h3>Premium</h3>
+                <p>Hochwertiges Leder trifft auf professionelle Veredelung.</p>
+            </div>
+        </section>
+
+        <!-- Lifestyle Gallery -->
+        <section class="gallery">
+            <div class="gallery-intro scroll-reveal">
+                <h2 class="handwritten">Wearable Art</h2>
+                <p>Gemacht für die, die ihren eigenen Weg gehen.</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="grid-item large scroll-reveal">
+                    <img src="assets/businessbag.png" alt="Urban Lifestyle Canvas Studios">
+                    <div class="caption">Urban Stories</div>
+                </div>
+                <div class="grid-item side-top scroll-reveal">
+                    <img src="assets/lea%20coworking%20setting.png" alt="Cafe Setting Lifestyle">
+                    <div class="caption">Everyday Art</div>
+                </div>
+                <div class="grid-item side-bottom scroll-reveal">
+                    <img src="assets/iphone17.png" alt="Businessbag Canvas Studios">
+                    <div class="caption">Individualität im Office</div>
+                </div>
+                <div class="grid-item bottom-left scroll-reveal">
+                    <img src="assets/staircase%20sitting%20male.png" alt="Canvas Studios Social Media">
+                    <div class="caption">Build in Public</div>
+                </div>
+                <div class="grid-item bottom-right scroll-reveal">
+                    <img src="assets/cafe%20sitting%20female.png" alt="Sneaker Detail">
+                    <div class="caption">Handgemalte Details</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="footer-cta scroll-reveal">
+            <h2>Du willst auf dem neusten Stand bleiben?</h2>
+            <p>Die erste Kollektion ist streng limitiert.</p>
+            <a href="https://instagram.com/canvasstudios.store" target="_blank" class="cta-button outline">
+                <span>Join the Waitlist</span>
+            </a>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <img src="assets/logos/Logo_white_bg_black_font.png" alt="CS Logo Small" class="footer-logo">
+                <p>&copy; 2025 Canvas Studios.</p>
+                <div class="social-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="https://instagram.com/canvasstudios.store">Instagram</a>
+                    <a href="mailto:info@canvasstudios.store">Contact</a>
+                </div>
+            </div>
         </footer>
     </main>
 
+    <script>
+        // Simple Scroll Reveal Script
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
