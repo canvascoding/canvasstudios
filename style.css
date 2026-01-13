@@ -1,0 +1,229 @@
+:root {
+    /* Brand Colors */
+    --color-white: #FFFFFF;
+    --color-navy: #0E1A30;
+    --color-orange: #F67529;
+    --color-grey: #F5F5F7;
+    --color-text-light: #6e6e73;
+
+    /* Spacing & Layout */
+    --container-max-width: 1200px;
+    --spacing-unit: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-white);
+    font-family: 'Inter', sans-serif;
+    color: var(--color-navy);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    color: var(--color-navy);
+    line-height: 1.1;
+}
+
+.tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.875rem;
+    color: var(--color-orange);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.subtext {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Layout */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    text-align: center;
+}
+
+header {
+    padding-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 80px; /* Adjust based on logo file aspect ratio */
+    width: auto;
+    object-fit: contain;
+}
+
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4rem 0;
+}
+
+.hero-image-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 3rem;
+    /* Subtle float animation */
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Optional: subtle drop shadow for depth if the image is a cutout */
+    filter: drop-shadow(0 20px 40px rgba(14, 26, 48, 0.1));
+}
+
+/* Abstract Paint Splashes (Decorative) */
+.paint-splash {
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+.splash-1 {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(246, 117, 41, 0.2); /* Signature Orange */
+    top: -20px;
+    right: -20px;
+    animation: pulse 4s ease-in-out infinite alternate;
+}
+
+.splash-2 {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(14, 26, 48, 0.1); /* Navy */
+    bottom: -10px;
+    left: 20px;
+    animation: pulse 5s ease-in-out infinite alternate-reverse;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.cta-button:hover {
+    background-color: var(--color-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(246, 117, 41, 0.25);
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+footer {
+    padding-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-in-down {
+    animation: fadeInDown 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+}
