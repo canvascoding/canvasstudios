@@ -19,6 +19,7 @@ Wir befinden uns aktuell in der Pre-Launch Phase.
 Bleibe auf dem Laufenden über unsere Reise und verpasse nicht den ersten Drop:
 
 *   **Instagram:** [@canvasstudios.store](https://instagram.com/canvasstudios.store) (Brand)
+*   **TikTok:** [@canvasstudios.store](https://tiktok.com/@canvasstudios.store) (Brand)
 *   **Build in Public:** [@canvas.alex](https://instagram.com/canvas.alex) (Founder Journey)
 *   **Webseite:** [canvasstudios.store](https://canvasstudios.store)
 
@@ -27,11 +28,35 @@ Bleibe auf dem Laufenden über unsere Reise und verpasse nicht den ersten Drop:
 ## 🛠 Entwicklung
 Diese Repository enthält die aktuelle Teaser-Webseite für Canvas Studios.
 
+### Technologie-Stack
+*   **Frontend:** Vanilla HTML5, CSS3, JavaScript
+*   **Hosting:** GitHub Pages
+*   **Newsletter:** n8n Webhook-Integration für E-Mail-Erfassung
+*   **Design:** Responsive Design mit Custom CSS Animations
+
 ### Lokale Vorschau
-Einfach die `index.html` in einem beliebigen Browser öffnen.
+Einfach die `index.html` in einem beliebigen Browser öffnen - kein Build-Prozess erforderlich.
+
+### Projektstruktur
+```
+canvasstudios_website/
+├── index.html          # Hauptseite mit Hero, Newsletter, Gallery
+├── impressum.html      # Impressum/Rechtliches
+├── style.css           # Komplettes Styling inkl. Responsive Design
+├── assets/             # Bilder, Logos
+└── CNAME              # Custom Domain für GitHub Pages
+```
+
+### Features
+*   Newsletter-Anmeldung mit GDPR-Consent
+*   Scroll-reveal Animationen
+*   Responsive Grid-Gallery
+*   Social Media Integration (Instagram, TikTok)
+*   Optimierte Schriftarten-Nutzung (Google Fonts)
+*   Mobile-first Design
 
 ### Hosting
-Die Seite wird über GitHub Pages gehostet.
+Die Seite wird über GitHub Pages unter [canvasstudios.store](https://canvasstudios.store) gehostet.
 
 ---
 &copy; 2025 Canvas Studios. All rights reserved.

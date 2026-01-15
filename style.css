@@ -9,13 +9,22 @@
     --c-text-muted: #6e6e73;
 
     /* Fonts */
-    --f-heading: 'DM Sans', sans-serif;
-    --f-body: 'Inter', sans-serif;
-    --f-accent: 'Amatic SC', cursive;
+    --f-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --f-accent: 'Amatic SC', 'Bradley Hand', 'Brush Script MT', cursive, sans-serif;
 
     /* Layout */
     --max-width: 1200px;
     --nav-height: 80px;
+}
+
+/* Font Loading Optimization */
+@font-face {
+    font-family: 'Amatic SC';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Amatic SC Bold'), local('AmaticSC-Bold');
 }
 
 /* Reset & Base */
@@ -30,8 +39,30 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+html {
+    overflow-x: hidden;
+}
+
+main {
+    overflow-x: hidden;
+    position: relative;
+}
+
 img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* Background Blobs Container */
+.blobs-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
 
 /* Header (V1 Style) */
 header {
@@ -40,7 +71,8 @@ header {
     display: flex;
     justify-content: center;
     position: relative;
-    z-index: 10;
+    z-index: 2;
+    background: transparent;
 }
 
 .logo {
@@ -60,6 +92,8 @@ header {
     margin: 0 auto;
     gap: 4rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -73,6 +107,7 @@ header {
     position: relative;
     display: flex;
     justify-content: center;
+    max-width: 100%;
 }
 
 /* Typography */
@@ -104,8 +139,9 @@ h2 {
 .subtext {
     font-size: 1.125rem;
     color: var(--c-text-muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     max-width: 450px;
+    line-height: 1.7;
 }
 
 .handwritten {
@@ -114,6 +150,8 @@ h2 {
     color: var(--c-orange);
     transform: rotate(-2deg);
     display: inline-block;
+    font-weight: 700;
+    font-display: swap;
 }
 
 /* Buttons */
@@ -156,7 +194,8 @@ h2 {
     z-index: 2;
     transform: rotate(-15deg) scale(1.1);
     filter: drop-shadow(0 30px 50px rgba(14, 26, 48, 0.15));
-    animation: float 6s ease-in-out infinite;
+    max-width: 500px;
+    width: 100%;
 }
 
 .blob {
@@ -165,19 +204,22 @@ h2 {
     filter: blur(60px);
     z-index: 1;
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .blob-1 {
-    width: 300px; height: 300px;
+    width: 400px; height: 400px;
     background: var(--c-orange);
-    top: -10%; right: -10%;
+    top: 10%;
+    right: 5%;
     animation: pulse 4s infinite alternate;
 }
 
 .blob-2 {
-    width: 250px; height: 250px;
+    width: 350px; height: 350px;
     background: #C1212D; /* Crimson */
-    bottom: -10%; left: -10%;
+    top: 50%;
+    left: 5%;
     animation: pulse 5s infinite alternate-reverse;
 }
 
@@ -209,6 +251,8 @@ h2 {
     line-height: 1;
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-display: swap;
 }
 
 .value-item h3 {
@@ -303,15 +347,26 @@ h2 {
 /* Footer */
 .footer-cta {
     text-align: center;
-    padding: 8rem 2rem;
+    padding: 8rem 2rem 10rem;
     background: var(--c-grey-light);
     margin-top: 4rem;
 }
 
+.footer-cta h2 {
+    margin-bottom: 1rem;
+}
+
+.footer-cta p {
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+    color: var(--c-text-muted);
+}
+
 footer {
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-top: 1px solid rgba(0,0,0,0.1);
     background: white;
+    padding-bottom: 4rem;
 }
 
 .footer-content {
@@ -326,15 +381,32 @@ footer {
 
 .footer-logo { height: 30px; opacity: 0.5; }
 
-.social-links a { margin-left: 2rem; }
-.social-links a:hover { color: var(--c-orange); }
-
-/* Animations */
-@keyframes float {
-    0%, 100% { transform: rotate(-15deg) scale(1.1) translateY(0); }
-    50% { transform: rotate(-15deg) scale(1.1) translateY(-20px); }
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
+.social-links a:hover { color: var(--c-orange); }
+
+.footer-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.footer-social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-social-icon:hover {
+    color: var(--c-orange);
+    transform: scale(1.1);
+}
+
+/* Animations */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.4; }
     100% { transform: scale(1.2); opacity: 0.7; }
@@ -362,12 +434,46 @@ footer {
 
 /* Responsive */
 @media (max-width: 900px) {
-    .hero { flex-direction: column-reverse; text-align: center; padding-top: 2rem; gap: 2rem; }
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 2rem;
+        gap: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .hero-content { align-items: center; display: flex; flex-direction: column; }
-    .sneaker-hero { width: 80%; max-width: 400px; }
-    
+
+    .hero-visual {
+        max-width: 90vw;
+        padding: 1rem;
+    }
+
+    .sneaker-hero {
+        width: 100%;
+        max-width: 350px;
+        transform: rotate(-12deg) scale(1.05);
+    }
+
+    .blob-1 {
+        width: 250px;
+        height: 250px;
+        top: 8%;
+        right: 5%;
+        filter: blur(55px);
+    }
+
+    .blob-2 {
+        width: 220px;
+        height: 220px;
+        top: 20%;
+        left: 8%;
+        filter: blur(55px);
+    }
+
     .logo { height: 60px; }
-    
+
     .grid-container {
         display: flex;
         flex-direction: column;
@@ -380,7 +486,431 @@ footer {
         text-align: center;
     }
 
-    .social-links a {
-        margin: 0 1rem;
+    .social-links {
+        gap: 1rem;
     }
-}/* Updated */
+
+    h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .footer-cta {
+        padding: 6rem 1.5rem 8rem;
+    }
+
+    footer {
+        padding-bottom: 5rem;
+    }
+}
+
+/* ==================== Newsletter Form Styles ==================== */
+
+.newsletter-form {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 550px;
+}
+
+.newsletter-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--c-navy);
+    margin: 0 0 1rem 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 1px solid rgba(14, 26, 48, 0.2);
+    border-radius: 8px;
+    font-family: var(--f-body);
+    font-size: 1rem;
+    color: var(--c-text);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: white;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--c-orange);
+    box-shadow: 0 0 0 3px rgba(246, 117, 41, 0.1);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--c-text-muted);
+    opacity: 0.7;
+}
+
+.newsletter-submit {
+    padding: 0.875rem 2rem;
+    background: var(--c-navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    white-space: nowrap;
+}
+
+.newsletter-submit:hover:not(:disabled) {
+    background: var(--c-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(246, 117, 41, 0.25);
+}
+
+.newsletter-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.button-loading {
+    display: inline-block;
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Consent Group (Checkbox + Label) */
+.consent-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgba(14, 26, 48, 0.75);
+    max-width: 550px;
+    text-align: left;
+}
+
+.consent-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--c-orange);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.consent-group label {
+    cursor: pointer;
+    line-height: 1.4;
+    user-select: none;
+}
+
+/* ==================== Social Media Section ==================== */
+
+.social-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.social-label {
+    font-size: 0.95rem;
+    color: var(--c-navy);
+    font-weight: 500;
+    margin: 0;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--c-navy);
+    border-radius: 50%;
+    color: var(--c-navy);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.social-icon-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+.social-icon-button:hover {
+    background: var(--c-navy);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ==================== Popup Modal Styles ==================== */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: popupScaleIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes popupScaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: rgba(14, 26, 48, 0.6);
+    cursor: pointer;
+    transition: color 0.3s;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-close:hover {
+    color: var(--c-orange);
+}
+
+.popup-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.popup-icon.success {
+    color: var(--c-orange);
+}
+
+.popup-icon.success::before {
+    content: '✓';
+}
+
+.popup-icon.error {
+    color: #DC2626;
+}
+
+.popup-icon.error::before {
+    content: '✕';
+}
+
+.popup-message {
+    font-family: var(--f-body);
+    font-size: 1.125rem;
+    color: var(--c-navy);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==================== Desktop Optimizations ==================== */
+
+@media (min-width: 901px) {
+    .newsletter-form {
+        max-width: 600px;
+    }
+
+    .newsletter-heading {
+        font-size: 1.2rem;
+    }
+
+    .form-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .newsletter-form input[type="email"] {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .consent-group {
+        flex-basis: 100%;
+        order: 2;
+    }
+
+    .newsletter-submit {
+        order: 1;
+    }
+
+    .newsletter-form input[type="email"] {
+        padding: 1rem 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .newsletter-submit {
+        padding: 1rem 2.25rem;
+        font-size: 1.05rem;
+    }
+
+    .consent-group {
+        max-width: 600px;
+        font-size: 0.9rem;
+    }
+
+    .social-section {
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    .social-label {
+        font-size: 1.05rem;
+    }
+
+    .social-buttons {
+        gap: 1rem;
+    }
+
+    .social-icon-button {
+        width: 52px;
+        height: 52px;
+    }
+
+    .social-icon-button svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Besseres Spacing in der Hero Section auf großen Bildschirmen */
+    @media (min-width: 1200px) {
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            max-width: 500px;
+        }
+    }
+
+    /* Desktop Blob Positioning - weiter weg vom Text */
+    .blob-1 {
+        top: 5%;
+        right: 2%;
+        width: 450px;
+        height: 450px;
+    }
+
+    .blob-2 {
+        top: 55%;
+        left: 2%;
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* ==================== Responsive Styles for Newsletter & Popup ==================== */
+
+@media (max-width: 900px) {
+    .newsletter-form {
+        max-width: 100%;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .newsletter-submit {
+        width: 100%;
+    }
+
+    .consent-group {
+        font-size: 0.8rem;
+    }
+
+    .social-icon-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-section {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+    }
+
+    .social-label {
+        font-size: 0.9rem;
+    }
+
+    .social-buttons {
+        gap: 0.5rem;
+    }
+
+    .social-icon-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icon-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .popup-content {
+        padding: 2rem 1.5rem;
+        width: 85%;
+    }
+
+    .popup-message {
+        font-size: 1rem;
+    }
+}
