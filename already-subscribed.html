@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bereits dabei! | Canvas Studios</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logos/Logo_white_bg_black_font.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .already-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-icon {
+            font-size: 4rem;
+            color: var(--c-navy);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .already-text {
+            font-size: 1.25rem;
+            color: var(--c-text-muted);
+            max-width: 550px;
+            margin-bottom: 3rem;
+        }
+
+        .email-display {
+            color: var(--c-orange);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- Background Blobs -->
+        <div class="blobs-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+
+        <header>
+            <a href="index.html">
+                <img src="assets/logos/no_background_logo.png" alt="Canvas Studios Logo" class="logo">
+            </a>
+        </header>
+
+        <section class="already-container">
+            <div class="info-icon">✨</div>
+            <h1 class="fade-in-up">Gute Nachrichten!</h1>
+            <p class="already-text fade-in-up" style="animation-delay: 0.1s;">
+                Du bist bereits für unseren Newsletter angemeldet <br>
+                <span id="emailInfo">und stehst schon auf der Liste für Batch 1.</span>
+            </p>
+
+            <div class="fade-in-up" style="animation-delay: 0.3s;">
+                <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--c-text-muted);">Folge uns auf Instagram für tägliche Updates:</p>
+                <a href="https://instagram.com/canvasstudios.store" target="_blank" class="cta-button primary">
+                    <span>@canvasstudios.store</span>
+                </a>
+            </div>
+
+            <div class="fade-in-up" style="margin-top: 2rem; animation-delay: 0.5s;">
+                <a href="index.html" class="cta-button outline">
+                    <span>Zurück zur Startseite</span>
+                </a>
+            </div>
+        </section>
+
+        <footer style="margin-top: 0; border: none;">
+            <div class="footer-content" style="justify-content: center;">
+                <p>&copy; <span id="currentYearAlready"></span> Canvas Studios.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('currentYearAlready').textContent = new Date().getFullYear();
+
+        // Optional: Get email from URL (Sendy parameter %e)
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        if (email) {
+            document.getElementById('emailInfo').innerHTML = `Die Adresse <span class="email-display">${email}</span> ist bereits bei uns registriert.`;
+        }
+    </script>
+
+</body>
+</html>

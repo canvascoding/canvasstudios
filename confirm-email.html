@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast geschafft! | Canvas Studios</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logos/Logo_white_bg_black_font.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .confirm-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mail-icon {
+            font-size: 4rem;
+            color: var(--c-orange);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .confirm-text {
+            font-size: 1.25rem;
+            color: var(--c-text-muted);
+            max-width: 550px;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            text-align: left;
+            background: var(--c-grey-light);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            background: var(--c-orange);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- Background Blobs -->
+        <div class="blobs-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+
+        <header>
+            <a href="index.html">
+                <img src="assets/logos/no_background_logo.png" alt="Canvas Studios Logo" class="logo">
+            </a>
+        </header>
+
+        <section class="confirm-container">
+            <div class="mail-icon">✉</div>
+            <h1 class="fade-in-up">Bestätige deine E-Mail</h1>
+            <p class="confirm-text fade-in-up" style="animation-delay: 0.1s;">
+                Wir haben dir gerade einen Bestätigungslink geschickt. <br>
+                Bitte schau in dein Postfach (und ggf. im Spam-Ordner nach).
+            </p>
+
+            <div class="steps fade-in-up" style="animation-delay: 0.3s;">
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>Postfach öffnen</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>Bestätigungs-Link klicken</p>
+                </div>
+                <div class="step-item" style="margin-bottom: 0;">
+                    <span class="step-number">3</span>
+                    <p>Eines der 100 Unikate sichern</p>
+                </div>
+            </div>
+
+            <div class="fade-in-up" style="margin-top: 3rem; animation-delay: 0.5s;">
+                <a href="index.html" class="cta-button outline">
+                    <span>Zurück zur Startseite</span>
+                </a>
+            </div>
+        </section>
+
+        <footer style="margin-top: 0; border: none;">
+            <div class="footer-content" style="justify-content: center;">
+                <p>&copy; <span id="currentYearConf"></span> Canvas Studios.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('currentYearConf').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

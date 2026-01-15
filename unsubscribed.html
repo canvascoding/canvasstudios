@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abmeldung erfolgreich | Canvas Studios</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logos/Logo_white_bg_black_font.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .unsubscribed-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .unsubscribed-icon {
+            font-size: 4rem;
+            color: var(--c-text-muted);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .unsubscribed-text {
+            font-size: 1.25rem;
+            color: var(--c-text-muted);
+            max-width: 500px;
+            margin-bottom: 3rem;
+        }
+
+        .resubscribe-section {
+            background: var(--c-grey-light);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .resubscribe-link {
+            color: var(--c-orange);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- Background Blobs -->
+        <div class="blobs-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+
+        <header>
+            <a href="index.html">
+                <img src="assets/logos/no_background_logo.png" alt="Canvas Studios Logo" class="logo">
+            </a>
+        </header>
+
+        <section class="unsubscribed-container">
+            <div class="unsubscribed-icon">👋</div>
+            <h1 class="fade-in-up">Schade, dass du gehst.</h1>
+            <p class="unsubscribed-text fade-in-up" style="animation-delay: 0.1s;">
+                Wir haben deine E-Mail-Adresse erfolgreich aus unserem Newsletter-Verteiler entfernt.
+            </p>
+
+            <!-- Re-subscribe Option (Sendy Tag %s support) -->
+            <div id="resubscribeBox" class="resubscribe-section fade-in-up" style="display: none; animation-delay: 0.3s;">
+                <p>War das ein Versehen? <br> 
+                   <a href="#" id="resubscribeUrl" class="resubscribe-link">Klicke hier, um dich wieder anzumelden.</a>
+                </p>
+            </div>
+
+            <div class="fade-in-up" style="margin-top: 3rem; animation-delay: 0.5s;">
+                <a href="index.html" class="cta-button primary">
+                    <span>Zurück zur Startseite</span>
+                </a>
+            </div>
+        </section>
+
+        <footer style="margin-top: 0; border: none;">
+            <div class="footer-content" style="justify-content: center;">
+                <p>&copy; <span id="currentYearUnsub"></span> Canvas Studios.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('currentYearUnsub').textContent = new Date().getFullYear();
+
+        // Handle Resubscribe URL from Sendy parameter %s
+        const urlParams = new URLSearchParams(window.location.search);
+        const resubUrl = urlParams.get('resubscribe_url');
+        if (resubUrl) {
+            const box = document.getElementById('resubscribeBox');
+            const link = document.getElementById('resubscribeUrl');
+            link.href = resubUrl;
+            box.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
